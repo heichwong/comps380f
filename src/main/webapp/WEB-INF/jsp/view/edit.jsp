@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Customer Support</title>
+        <title>Student Support</title>
     </head>
     <body>
         <c:url var="logoutUrl" value="/logout"/>
@@ -10,21 +10,21 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
-        <h2>Ticket #${ticket.id}</h2>
+        <h2>Lecture #${lecture.id}</h2>
         <form:form method="POST" enctype="multipart/form-data"
-                   modelAttribute="ticketForm">   
+                   modelAttribute="lectureForm">   
             <form:label path="subject">Subject</form:label><br/>
             <form:input type="text" path="subject" /><br/><br/>
             <form:label path="body">Body</form:label><br/>
             <form:textarea path="body" rows="5" cols="30" /><br/><br/>
-            <c:if test="${fn:length(ticket.attachments) > 0}">
+            <c:if test="${fn:length(lecture.attachments) > 0}">
                 <b>Attachments:</b><br/>
                 <ul>
-                    <c:forEach items="${ticket.attachments}" var="attachment">
+                    <c:forEach items="${lecture.attachments}" var="attachment">
                         <li>
                             <c:out value="${attachment.name}" />
                             [<a href="<c:url
-                                    value="/ticket/${ticket.id}/delete/${attachment.name}"
+                                    value="/lecture/${lecture.id}/delete/${attachment.name}"
                                     />">Delete</a>]
                         </li>
                     </c:forEach>
@@ -34,6 +34,6 @@
             <input type="file" name="attachments" multiple="multiple"/><br/><br/>
             <input type="submit" value="Save"/><br/><br/>
         </form:form>
-        <a href="<c:url value="/ticket" />">Return to list tickets</a>
+        <a href="<c:url value="/lecture" />">Return to list lectures</a>
     </body>
 </html>

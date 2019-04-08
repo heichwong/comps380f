@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Customer Support</title>
+        <title>Student Support</title>
     </head>
     <body>
         <c:url var="logoutUrl" value="/logout"/>
@@ -10,8 +10,8 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
-        <h2>Create a Ticket</h2>
-        <form:form method="POST" enctype="multipart/form-data" modelAttribute="ticketForm">
+        <h2>Create a Lecture</h2>
+        <form:form method="POST" enctype="multipart/form-data" modelAttribute="lectureForm">
             <form:label path="subject">Subject</form:label><br/>
             <form:input type="text" path="subject" /><br/><br/>
             <form:label path="body">Body</form:label><br/>

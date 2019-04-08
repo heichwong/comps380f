@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Customer Support</title>
+        <title>Student Support</title>
     </head>
     <body>
         <c:url var="logoutUrl" value="/logout"/>
@@ -10,25 +10,25 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
-        <h2>Ticket #${ticket.id}: <c:out value="${ticket.subject}" /></h2>
-        <security:authorize access="hasRole('ADMIN') or principal.username=='${ticket.customerName}'">            
-            [<a href="<c:url value="/ticket/edit/${ticket.id}" />">Edit</a>]
+        <h2>Lecture #${lecture.id}: <c:out value="${lecture.subject}" /></h2>
+        <security:authorize access="hasRole('ADMIN') or principal.username=='${lecture.studentName}'">            
+            [<a href="<c:url value="/lecture/edit/${lecture.id}" />">Edit</a>]
         </security:authorize>
         <security:authorize access="hasRole('ADMIN')">            
-            [<a href="<c:url value="/ticket/delete/${ticket.id}" />">Delete</a>]
+            [<a href="<c:url value="/lecture/delete/${lecture.id}" />">Delete</a>]
         </security:authorize>
         <br /><br />
-        <i>Customer Name - <c:out value="${ticket.customerName}" /></i><br /><br />
-        <c:out value="${ticket.body}" /><br /><br />
-        <c:if test="${fn:length(ticket.attachments) > 0}">
+        <i>Creater Name - <c:out value="${lecture.studentName}" /></i><br /><br />
+        <c:out value="${lecture.body}" /><br /><br />
+        <c:if test="${fn:length(lecture.attachments) > 0}">
             Attachments:
-            <c:forEach items="${ticket.attachments}" var="attachment"
+            <c:forEach items="${lecture.attachments}" var="attachment"
                        varStatus="status">
                 <c:if test="${!status.first}">, </c:if>
-                <a href="<c:url value="/ticket/${ticket.id}/attachment/${attachment.name}" />">
+                <a href="<c:url value="/lecture/${lecture.id}/attachment/${attachment.name}" />">
                     <c:out value="${attachment.name}" /></a>
             </c:forEach><br /><br />
         </c:if>
-        <a href="<c:url value="/ticket" />">Return to list tickets</a>
+        <a href="<c:url value="/lecture" />">Return to list lectures</a>
     </body>
 </html>
