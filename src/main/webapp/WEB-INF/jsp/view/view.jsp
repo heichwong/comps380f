@@ -29,6 +29,7 @@
                     <c:out value="${attachment.name}" /></a>
             </c:forEach><br /><br />
         </c:if>
+        <a href="<c:url value="/lecture/comment/${lecture.id}" />">Comment(s) of this lecture.</a>
         <a href="<c:url value="/lecture" />">Return to list lectures</a>
     </body>
 </html>

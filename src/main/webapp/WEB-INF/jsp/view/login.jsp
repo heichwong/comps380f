@@ -11,7 +11,7 @@
             <p>You have logged out.</p>
         </c:if>
         <h2>Student Support Login</h2>
-        <a href="<c:url value="/registrate/create" />">Sign Up</a><br />
+        <a href="<c:url value="/register/create" />">Sign Up</a><br />
         <form action="login" method="POST">
             <label for="username">Username:</label><br/>
             <input type="text" id="username" name="username" /><br/><br/>

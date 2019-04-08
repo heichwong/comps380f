@@ -160,4 +160,5 @@ public class LectureController {
         lectureService.deleteAttachment(lectureId, name);
         return "redirect:/lecture/edit/" + lectureId;
     }
+    
 }
