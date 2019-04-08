@@ -4,6 +4,7 @@
     <title>Student Support</title>
 </head>
 <body>
+<a href="<c:url value="/login" />">Login</a><br />
 <h2>Registration</h2>
 <form:form method="POST" enctype="multipart/form-data"
            modelAttribute="lectureUser">
