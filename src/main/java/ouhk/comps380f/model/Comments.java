@@ -21,6 +21,9 @@ public class Comments implements Serializable{
     
     @Column(name = "content")
     private String content;
+    
+    @Column(name = "lecture_id")
+    private long lectureId;
 
     public long getId() {
         return id;
@@ -44,6 +47,14 @@ public class Comments implements Serializable{
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public long getLectureId() {
+        return lectureId;
+    }
+
+    public void setLectureId(long lectureId) {
+        this.lectureId = lectureId;
     }
     
     

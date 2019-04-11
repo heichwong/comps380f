@@ -18,8 +18,7 @@
             </c:when>
             <c:otherwise>
                 Lecture ${lecture.id}:<br />
-                <c:forEach items="${commentsDatabase}" var="comment">
-                    
+                <c:forEach items="${commentsDatabase}" var="content"> 
                     <br /><br />
                 </c:forEach>
             </c:otherwise>

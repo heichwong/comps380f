@@ -1,23 +1,27 @@
 package ouhk.comps380f.controller;
 
-import java.io.IOException;
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
-import org.springframework.web.servlet.view.RedirectView;
-import ouhk.comps380f.model.LectureUser;
-import ouhk.comps380f.dao.LectureUserRepository;
+import ouhk.comps380f.service.CommentService;
 
 @Controller
-@RequestMapping("comments")
+@RequestMapping("lecture")
 public class CommentsController {
-
-    public static class Form {
+    
+    @Autowired
+    private CommentService commentService;
+    
+    @RequestMapping(value = "/comment/{lecture.id}", method = RequestMethod.GET)
+    public ModelAndView create(@PathVariable("lectureId") long lectureId, ModelMap model) {
+        return new ModelAndView("comments", "comments", new commentForm());
+    }
+    
+    public static class commentForm {
 
         private String username;
         private String content;
@@ -39,10 +43,7 @@ public class CommentsController {
         }
     }
 
-    @RequestMapping(value = "create", method = RequestMethod.GET)
-    public ModelAndView create() {
-        return new ModelAndView("comments", "Comments", new Form());
-    }
+    
 
     
     

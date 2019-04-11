@@ -4,14 +4,14 @@
         <title>Student Support Login</title>
     </head>
     <body>
+        <a href="<c:url value="/register/create" />">Sign Up</a><br />
         <c:if test="${param.error != null}">
             <p>Login failed.</p>
         </c:if>
         <c:if test="${param.logout != null}">
             <p>You have logged out.</p>
         </c:if>
-        <h2>Student Support Login</h2>
-        <a href="<c:url value="/register/create" />">Sign Up</a><br />
+        <h2>Student Support Login</h2>       
         <form action="login" method="POST">
             <label for="username">Username:</label><br/>
             <input type="text" id="username" name="username" /><br/><br/>
