@@ -12,8 +12,7 @@
     <form:input type="text" path="username" /><br/><br/>
     <form:label path="password">Password</form:label><br/>
     <form:input type="text" path="password" /><br/><br/>
-    <form:label path="roles">Roles</form:label><br/>
-    <form:radiobutton path="roles" value="ROLE_USER" />ROLE_USER
+    <form:hidden path="roles" value="ROLE_USER" />
     <br /><br />
     <input type="submit" value="Register"/>
 </form:form>
