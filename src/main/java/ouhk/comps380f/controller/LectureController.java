@@ -19,13 +19,17 @@ import ouhk.comps380f.exception.LectureNotFound;
 import ouhk.comps380f.model.Attachment;
 import ouhk.comps380f.model.Lecture;
 import ouhk.comps380f.service.AttachmentService;
+import ouhk.comps380f.service.CommentService;
 import ouhk.comps380f.view.DownloadingView;
 import ouhk.comps380f.service.LectureService;
 
 @Controller
 @RequestMapping("lecture")
 public class LectureController {
-
+    
+    @Autowired
+    private CommentService commentService;
+    
     @Autowired
     private LectureService lectureService;
 
@@ -77,8 +81,8 @@ public class LectureController {
 
     @RequestMapping(value = "create", method = RequestMethod.POST)
     public String create(Form form, Principal principal) throws IOException {
-        long lectureId = lectureService.createLecture(principal.getName(),
-                form.getSubject(), form.getBody(), form.getAttachments());
+        long lectureId = lectureService.createLecture(
+                principal.getName(), form.getSubject(), form.getBody(), form.getAttachments());
         return "redirect:/lecture/view/" + lectureId;
     }
 
@@ -90,6 +94,7 @@ public class LectureController {
             return "redirect:/lecture/list";
         }
         model.addAttribute("lecture", lecture);
+        model.addAttribute("commentDatabase", commentService.getComment(lectureId));
         return "view";
     }
 

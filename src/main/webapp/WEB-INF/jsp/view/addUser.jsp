@@ -10,7 +10,7 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
 
-<h2>Create a User</h2>
+<h2>Create / Edit a User</h2>
 <form:form method="POST" enctype="multipart/form-data"
            modelAttribute="lectureUser">
     <form:label path="username">Username</form:label><br/>
@@ -21,7 +21,7 @@
     <form:checkbox path="roles" value="ROLE_USER" />ROLE_USER
     <form:checkbox path="roles" value="ROLE_ADMIN" />ROLE_ADMIN
     <br /><br />
-    <input type="submit" value="Add User"/>
+    <input type="submit" value="Add / Update User"/>
 </form:form>
 </body>
 </html>

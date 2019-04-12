@@ -29,7 +29,32 @@
                     <c:out value="${attachment.name}" /></a>
             </c:forEach><br /><br />
         </c:if>
-        <a href="<c:url value="/lecture/comment/${lecture.id}" />">Comment(s) of this lecture.</a>
+            
+        <table border="0">
+            <tr>
+                <th>User</th>
+                <th>Comment</th>
+            </tr>
+
+            <c:choose>
+                <c:when test="${fn:length(commentDatabase) == 0}">
+                    <tr>
+                        <td colspan="2"><i>There are no comments.</i></td>
+                    </tr>
+                </c:when>
+                <c:otherwise>
+                    <c:forEach items="${commentDatabase}" var="entry">
+                        <tr>
+                            <td><c:out value="${entry.username}" /></td>
+                            <td><c:out value="${entry.comment}" /></td>
+                        </tr>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
+
+        </table><br>
+
+        <a href="<c:url value="/lecture/comment/${lecture.id}" />">Leave a Comment</a><br/><br/>
         <a href="<c:url value="/lecture" />">Return to list lectures</a>
     </body>
 </html>

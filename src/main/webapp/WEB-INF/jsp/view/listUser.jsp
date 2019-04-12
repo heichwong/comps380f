@@ -9,7 +9,7 @@
 <br /><br />
 <a href="<c:url value="/lecture" />">Return to list lectures</a>
 <h2>Users</h2>
-<a href="<c:url value="/user/create" />">Create a User</a><br /><br />
+<a href="<c:url value="/user/create" />">Create / Edit a User</a><br /><br />
 <c:choose>
     <c:when test="${fn:length(lectureUsers) == 0}">
         <i>There are no users in the system.</i>
