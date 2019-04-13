@@ -5,6 +5,9 @@
 </head>
 <body>
 <a href="<c:url value="/login" />">Login</a><br />
+        <c:if test="${param.error != null}">
+            <p>Registration failed! Username already used by another user.</p>
+        </c:if>
 <h2>Registration</h2>
 <form:form method="POST" enctype="multipart/form-data"
            modelAttribute="lectureUser">

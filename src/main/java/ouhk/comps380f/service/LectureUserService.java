@@ -19,6 +19,8 @@ public class LectureUserService implements UserDetailsService {
 
     @Resource
     LectureUserRepository lectureUserRepo;
+    
+    //private LectureUser lectureUser;
 
     @Override
     public UserDetails loadUserByUsername(String username)
