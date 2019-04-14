@@ -209,6 +209,8 @@ public class PollController {
     }
 
     //Traditional Chinese Controller
+    
+    
     @RequestMapping(value = "poll/list/addPoll/tc", method = RequestMethod.GET)
     public ModelAndView TCcreateForm() {
         return new ModelAndView("TCaddPoll", "pollForm", new addPollForm());
@@ -254,14 +256,14 @@ public class PollController {
     }
 
     @RequestMapping(value = "pollcomment/{pollId}/tc", method = RequestMethod.POST)
-    public String zh_addComment(@PathVariable("pollId") long pollId, cmForm form,
+    public String TCaddComment(@PathVariable("pollId") long pollId, cmForm form,
             ModelMap model, HttpServletRequest request) throws Exception {
         pollService.createComment(request.getUserPrincipal().getName(), form.getComment(), pollId);
         return "redirect:/lecture/poll/" + pollId + "/tc";
     }
 
-    @RequestMapping(value = {"/poll/deleteComment/{pollId}/{Id}"}, method = RequestMethod.GET)
-    public View zh_delComment(@PathVariable("Id") long Id, @PathVariable("pollId") long poll_id)
+    @RequestMapping(value = {"/poll/deleteComment/{pollId}/{Id}/tc"}, method = RequestMethod.GET)
+    public View TCdelComment(@PathVariable("Id") long Id, @PathVariable("pollId") long poll_id)
             throws PollCommentNotFound {
         pollService.delComment(Id);
         return new RedirectView("/lecture/poll/" + poll_id + "/tc", true);
