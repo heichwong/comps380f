@@ -4,6 +4,4 @@ CREATE TABLE pollresponse(
     username VARCHAR(50) NOT NULL,
     response VARCHAR(255) NOT NULL,
     PRIMARY KEY(id)
-    --FOREIGN KEY poll_id REFERENCES poll(poll_id),
-    --FOREIGN KEY username REFERENCES users(username)
 );

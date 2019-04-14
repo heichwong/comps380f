@@ -76,4 +76,32 @@ public class LectureUserController {
         lectureUserRepo.delete(lectureUserRepo.findOne(username));
         return new RedirectView("/user/list", true);
     }
+    
+    //Traditional Chinese Controller
+    @RequestMapping(value = {"list/tc"}, method = RequestMethod.GET)
+    public String TClist(ModelMap model) {
+        model.addAttribute("lectureUsers", lectureUserRepo.findAll());
+        return "TClistUser";
+    }
+    
+    @RequestMapping(value = "create/tc", method = RequestMethod.GET)
+    public ModelAndView TCcreate() {
+        return new ModelAndView("TCaddUser", "lectureUser", new Form());
+    }
+
+    @RequestMapping(value = "create/tc", method = RequestMethod.POST)
+    public View TCcreate(Form form) throws IOException {
+        LectureUser user = new LectureUser(form.getUsername(),
+                form.getPassword(), form.getRoles()
+        );
+        lectureUserRepo.save(user);
+        return new RedirectView("/user/list/tc", true);
+    }
+
+    @RequestMapping(value = "delete/{username}/tc", method = RequestMethod.GET)
+    public View TCdeleteLecture(@PathVariable("username") String username) {
+        lectureUserRepo.delete(lectureUserRepo.findOne(username));
+        return new RedirectView("/user/list/tc", true);
+    }
+    
 }

@@ -22,5 +22,8 @@
     <br /><br />
     <input type="submit" value="Register"/>
 </form:form>
+    <br />
+        <a href="<c:url value="/lecture/list" />">Return to list lectures</a>
+
 </body>
 </html>

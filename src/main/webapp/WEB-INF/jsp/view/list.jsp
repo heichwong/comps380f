@@ -18,7 +18,7 @@
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
         </security:authorize>
-
+<a href="<c:url value="/lecture/list/tc"/>">中文介面</a>
         <h2>Lectures</h2>
         <security:authorize access="hasRole('ADMIN')">    
             <a href="<c:url value="/user" />">Manage User Accounts</a><br /><br />

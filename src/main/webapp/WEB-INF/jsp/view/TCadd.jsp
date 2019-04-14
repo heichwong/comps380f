@@ -46,7 +46,7 @@
                 width: 100%;
                 right: 0;
                 height: 57px;
-                content: " or drag it here. ";
+                content: " 或拖放進來 ";
                 display: block;
                 margin: 0 auto;
                 color: #2ea591;

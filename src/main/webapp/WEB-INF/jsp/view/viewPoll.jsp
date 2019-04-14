@@ -37,7 +37,43 @@
             <form:hidden path="username" value="${principal.username}"/>
             <input type="submit" value="Submit"/>
         </form:form>
-        <br>
-        <a href="<c:url value="/lecture/list" />">Return to poll page</a>
+        <br/>
+        <br/>
+        <a href="<c:url value="/lecture/pollcomment/${poll_id}"/>">Leave a Comment</a><br/>
+        <table border="0">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>&nbsp;&nbsp;&nbsp;</th>
+                    <th>Comment</th>
+                </tr>
+            </thead>
+
+            <c:choose>
+                <c:when test="${fn:length(pollCommentDatabase) == 0}">
+                    <tbody>
+                        <tr>
+                            <td colspan="3"><i>There are no comments.</i></td>
+                        </tr>
+                    </tbody>
+                </c:when>
+                <c:otherwise>
+                    <tbody>
+                        <c:forEach items="${pollCommentDatabase}" var="entry">
+                            <tr>
+                                <td><c:out value="${entry.username}" /></td>
+                                <td>&nbsp;&nbsp;&nbsp;</td>
+                                <td><c:out value="${entry.comment}" />
+                                    <security:authorize access="hasRole('ADMIN')">
+                                        [<a href="<c:url value="deleteComment/${poll_id}/${entry.id}" />">Delete</a>]
+                                    </security:authorize></td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </c:otherwise>
+            </c:choose>
+
+        </table><br>
+        <a href="<c:url value="/lecture/list" />">Return to list lectures</a>
     </body>
 </html>

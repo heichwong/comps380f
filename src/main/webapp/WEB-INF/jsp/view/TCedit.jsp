@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <title>Edit the Lecture</title>
+        <title>編輯課程</title>
         <style>
             .files input {
                 outline: 2px dashed #92b0b3;
@@ -56,37 +56,37 @@
     <body>
             Lecture ${lecture.id}
                     <security:authorize access="!isAuthenticated()">
-                        <a href="<c:url value="/login"/>">Login</a>
+                        <a href="<c:url value="/tc/login"/>">登入</a>
                     </security:authorize>
                     <security:authorize access="isAuthenticated()">
                         <c:url var="logoutUrl" value="/logout"/>
                         <form action="${logoutUrl}" method="post">
-                            <input type="submit" value="Log out" class="btn btn-primary"/>
+                            <input type="submit" value="登出" class="btn btn-primary"/>
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         </form>
                     </security:authorize>
 
            <br>
         <form:form method="POST" enctype="multipart/form-data" modelAttribute="lectureForm">
-            <form:label path="subject">Subject</form:label><br/>
+            <form:label path="subject">主題</form:label><br/>
             <form:textarea path="subject" rows="2" cols="50" placeholder="Leave Comment Here" class="form-control" required="required"/>
-            <form:label path="body">Body</form:label><br/>
+            <form:label path="body">內容</form:label><br/>
             <form:textarea path="body" rows="5" cols="30" /><br/><br/>
             <c:if test="${fn:length(lecture.attachments) > 0}">
-                <b>Lecture Materials:</b><br/>
+                <b>課程教材:</b><br/>
                 <ul>
                     <c:forEach items="${lecture.attachments}" var="attachment">
                         <li>
                             <c:out value="${attachment.name}" />
                             [<a href="<c:url
-                                    value="/lecture/${lecture.id}/delete/${attachment.name}"
-                                    />">Delete</a>]
+                                    value="/lecture/${lecture.id}/delete/${attachment.name}/tc"
+                                    />">刪除</a>]
                         </li>
                     </c:forEach>
                 </ul>
 
             </c:if>
-            <b>Upload Materials</b><br /><br />
+            <b>上載教材</b><br /><br />
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -96,9 +96,9 @@
                     </div>
                 </div>
             </div>
-            <input type="submit" value="Save" class="btn btn-success"/><br/><br/>
+            <input type="submit" value="儲存" class="btn btn-success"/><br/><br/>
         </form:form>
-        <a href="<c:url value="/lecture" />">Return to list lectures</a>
+        <a href="<c:url value="/lecture/list/tc" />">返回課程列表</a>
 
     </body>
 </html>

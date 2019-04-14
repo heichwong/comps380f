@@ -71,4 +71,24 @@ public class RegUserController {
             return new RedirectView("/login", true);
         }
     }
+    
+    //Traditional Chinese Controller
+    
+    @RequestMapping(value = "TCcreate", method = RequestMethod.GET)
+    public ModelAndView TCcreate() {
+        return new ModelAndView("TCregUser", "lectureUser", new Form());
+    }
+
+    @RequestMapping(value = "TCcreate", method = RequestMethod.POST)
+    public View TCcreate(Form form) throws IOException {
+        LectureUser user = new LectureUser(form.getUsername(),
+                form.getPassword(), form.getRoles()
+        );
+        if (lectureUserRepo.findOne(form.getUsername()) != null){
+            return new RedirectView("TCcreate?error");
+        }else {
+            lectureUserRepo.save(user);
+            return new RedirectView("/login?TC", true);
+        }
+    }
 }

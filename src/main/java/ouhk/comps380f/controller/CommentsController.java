@@ -91,4 +91,30 @@ public class CommentsController {
     }
 
 
+//Traditional Chinese Controller   
+    
+        @RequestMapping(value = "/comment/{lectureId}/tc", method = RequestMethod.GET)
+    public ModelAndView TCcreateForm(@PathVariable("lectureId") long lectureId, ModelMap model) {
+        Lecture lecture = lectureService.getLecture(lectureId);
+        if (lecture == null) {
+            return new ModelAndView("TClist");
+        }
+        model.addAttribute("lecture", lecture);
+        return new ModelAndView("TCcomment", "commentForm", new cmForm());
+    }
+
+    @RequestMapping(value = "comment/{lectureId}/tc", method = RequestMethod.POST)
+    public View TCaddComment(@PathVariable("lectureId") long lectureId, cmForm form,
+            ModelMap model, HttpServletRequest request) throws Exception {
+        commentService.createComment(request.getUserPrincipal().getName(), form.getComment(), form.getLecture_id());
+        return new RedirectView("/lecture/view/tc/" + lectureId, true);
+    }
+
+    @RequestMapping(value = "view/deleteComment/{lectureId}/{Id}/tc", method = RequestMethod.GET)
+    public View TCdelComment(@PathVariable("Id") long Id, @PathVariable("lectureId") long lectureId)
+            throws CommentNotFound {
+        commentService.delComment(Id);
+        return new RedirectView("/lecture/view/tc/" + lectureId, true);
+    }
+    
 }

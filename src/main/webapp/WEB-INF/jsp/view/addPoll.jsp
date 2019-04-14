@@ -29,9 +29,9 @@
                     <form:label path="response2">Answer2:</form:label><br/>
                     <form:textarea path="response2" rows="2" cols="50" required="required"/><br/><br/>
                     <form:label path="response3">Answer3:</form:label><br/>
-                    <form:textarea path="response3" rows="2" cols="50"/><br/><br/>
+                    <form:textarea path="response3" rows="2" cols="50" required="required"/><br/><br/>
                     <form:label path="response4">Answer4:</form:label><br/>
-                    <form:textarea path="response4" rows="2" cols="50"/><br/>
+                    <form:textarea path="response4" rows="2" cols="50" required="required"/><br/>
                 <input type="submit" value="Submit"/>
             </form:form>
                 <br/>
