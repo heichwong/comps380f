@@ -25,9 +25,10 @@
         <form:form method="POST" modelAttribute="pollCommentForm">
             <form:textarea path="comment" rows="5" cols="50" required="required"/>
             <form:hidden path="username" value="${principal.username}"/>
-            <form:hidden path="poll_id" value="${poll.id}"/>
+            <form:hidden path="poll_id" value="${poll.id}"/><br />
             <input type="submit" value="評論"/>
         </form:form>
+            <br/>
             <form action="<c:url value="/lecture" />" method="GET">
                 <input type="submit" value="取消"/>
             </form>

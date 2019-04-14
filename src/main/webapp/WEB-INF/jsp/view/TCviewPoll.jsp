@@ -39,7 +39,7 @@
         </form:form>
         <br/>
         <br/>
-        <a href="<c:url value="/lecture/pollcomment/${poll_id}"/>">留下評論</a><br/>
+        <a href="<c:url value="/lecture/pollcomment/${poll_id}/tc"/>">留下評論</a><br/>
         
         <table border="0">
                 <thead>
@@ -66,7 +66,7 @@
                                     <td>&nbsp;&nbsp;&nbsp;</td>
                                     <td><c:out value="${entry.comment}" />
                                         <security:authorize access="hasRole('ADMIN')">
-                                            [<a href="<c:url value="deleteComment/${poll_id}/${entry.id}" />">刪除</a>]
+                                            [<a href="<c:url value="/lecture/poll/deleteComment/${poll_id}/${entry.id}/tc" />">刪除</a>]
                                         </security:authorize></td>
                                 </tr>
                             </c:forEach>
