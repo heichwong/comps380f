@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <title>Student Support</title>
     </head>
     <body>
@@ -42,7 +45,7 @@
                 </c:forEach>
             </c:otherwise>
         </c:choose>
-
+        <h2>Pollings</h2>
         <security:authorize access="isAuthenticated() and hasRole('ADMIN')">
             <a href="<c:url value ="/lecture/poll/list/addPoll"/>">Create a Poll</a><br/><br/>
         </security:authorize>

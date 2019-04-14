@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <title>Student Support</title>
     </head>
     <body>
@@ -33,6 +36,7 @@
         <table border="0">
             <tr>
                 <th>User</th>
+                <th>&nbsp;&nbsp;&nbsp;</th>
                 <th>Comment</th>
             </tr>
 
@@ -46,6 +50,7 @@
                     <c:forEach items="${commentDatabase}" var="entry">
                         <tr>
                             <td><c:out value="${entry.username}" /></td>
+                            <td>&nbsp;&nbsp;&nbsp;</td>
                             <td><c:out value="${entry.comment}" /></td>
                             <security:authorize access="hasRole('ADMIN')">            
                                 <td>[<a href="<c:url value="deleteComment/${lectureId}/${entry.id}"/>">Delete</a>]</td>
