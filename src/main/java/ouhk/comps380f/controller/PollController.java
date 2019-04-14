@@ -109,11 +109,11 @@ public class PollController {
 
     }
 
-    @RequestMapping(value = "poll/list", method = RequestMethod.GET)
+    /*@RequestMapping(value = "poll/list", method = RequestMethod.GET)
     public String listPoll(ModelMap model) {
         model.addAttribute("pollDatabase", pollService.getPolls());
         return "poll";
-    }
+    }*/
 
     @RequestMapping(value = "poll/list/addPoll", method = RequestMethod.GET)
     public ModelAndView createForm() {
@@ -124,7 +124,7 @@ public class PollController {
     public String addPollFrom(addPollForm form,
             ModelMap model, HttpServletRequest request) throws Exception {
         pollService.createPoll(form.getQuestion(), form.getResponse1(), form.getResponse2(), form.getResponse3(), form.getResponse4());
-        return "redirect:/lecture/poll/list";
+        return "redirect:/lecture/list";
     }
 
     @RequestMapping(value = "/poll/{poll_id}", method = RequestMethod.GET)
@@ -149,7 +149,7 @@ public class PollController {
     @RequestMapping(value = "/poll/delete/{poll_id}", method = RequestMethod.GET)
     public String delPoll(@PathVariable("poll_id") long poll_id) throws Exception {
         pollService.delPoll(poll_id);
-        return "redirect:/lecture/poll/list";
+        return "redirect:/lecture/list";
     }
 
 }

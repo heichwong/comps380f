@@ -41,26 +41,6 @@ public class CommentServiceImpl implements CommentService {
         commentRepo.delete(deletedAllComment);
     }
 
-    /*
-    @Override
-    @Transactional
-    public List<Comment> getLectures() {
-        return commentRepo.findAll();
-    }
-    @Override
-    @Transactional(rollbackFor = AttachmentNotFound.class)
-    public void deleteAttachment(long lectureId, String name) throws AttachmentNotFound {
-        Lecture lecture = lectureRepo.findOne(lectureId);
-        for (Attachment attachment : lecture.getAttachments()) {
-            if (attachment.getName().equals(name)) {
-                lecture.deleteAttachment(attachment);
-                lectureRepo.save(lecture);
-                return;
-            }
-        }
-        throw new AttachmentNotFound();
-    }
-     */
     @Override
     @Transactional
     public long createComment(String username, String cm,

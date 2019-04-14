@@ -14,9 +14,9 @@
         <h2>Student Support Login</h2>       
         <form action="login" method="POST">
             <label for="username">Username:</label><br/>
-            <input type="text" id="username" name="username" /><br/><br/>
+            <input type="text" id="username" name="username" required="required"/><br/><br/>
             <label for="password">Password:</label><br/>
-            <input type="password" id="password" name="password" /><br/><br/>
+            <input type="password" id="password" name="password" required="required"/><br/><br/>
             <input type="checkbox" id="remember-me" name="remember-me" />
             <label for="remember-me">Remember me</label><br/><br/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

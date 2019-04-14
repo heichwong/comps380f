@@ -47,6 +47,9 @@
                         <tr>
                             <td><c:out value="${entry.username}" /></td>
                             <td><c:out value="${entry.comment}" /></td>
+                            <security:authorize access="hasRole('ADMIN')">            
+                                <td>[<a href="<c:url value="deleteComment/${lectureId}/${entry.id}"/>">Delete</a>]</td>
+                            </security:authorize>
                         </tr>
                     </c:forEach>
                 </c:otherwise>

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 import ouhk.comps380f.exception.AttachmentNotFound;
+import ouhk.comps380f.exception.CommentNotFound;
 import ouhk.comps380f.exception.LectureNotFound;
 import ouhk.comps380f.model.Attachment;
 import ouhk.comps380f.model.Lecture;
@@ -22,6 +23,7 @@ import ouhk.comps380f.service.AttachmentService;
 import ouhk.comps380f.service.CommentService;
 import ouhk.comps380f.view.DownloadingView;
 import ouhk.comps380f.service.LectureService;
+import ouhk.comps380f.service.PollService;
 
 @Controller
 @RequestMapping("lecture")
@@ -35,10 +37,14 @@ public class LectureController {
 
     @Autowired
     private AttachmentService attachmentService;
+    
+    @Autowired
+    private PollService pollService;
 
     @RequestMapping(value = {"", "list"}, method = RequestMethod.GET)
     public String list(ModelMap model) {
         model.addAttribute("lectureDatabase", lectureService.getLectures());
+        model.addAttribute("pollDatabase", pollService.getPolls());
         return "list";
     }
 
@@ -114,7 +120,8 @@ public class LectureController {
 
     @RequestMapping(value = "delete/{lectureId}", method = RequestMethod.GET)
     public String deleteLecture(@PathVariable("lectureId") long lectureId)
-            throws LectureNotFound {
+            throws LectureNotFound, CommentNotFound {
+        commentService.delAllComment(lectureId);
         lectureService.delete(lectureId);
         return "redirect:/lecture/list";
     }

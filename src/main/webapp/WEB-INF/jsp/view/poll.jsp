@@ -20,7 +20,6 @@
                         </form>
                     </security:authorize>
 
-        <div>
             <c:choose>
                 <c:when test="${fn:length(pollDatabase) == 0}">
                     <i>There are no poll in the system.</i>
@@ -33,7 +32,7 @@
                                 <a href="<c:url value="${poll.poll_id}" />">
                                     <c:out value="${poll.question}" /></a>
                                     <security:authorize access="hasRole('ADMIN')">            
-                                    [<a class="text-danger" href="<c:url value="/lecture/poll/delete/${poll.poll_id}" />">Delete</a>]
+                                    [<a href="<c:url value="/lecture/poll/delete/${poll.poll_id}" />">Delete</a>]
                                 </security:authorize>
                             </li>
                         </c:forEach>
@@ -42,6 +41,5 @@
             </c:choose>
             <br>
             <a href="<c:url value="/lecture" />">Return to list lectures</a>
-        </div>
     </body>
 </html>
